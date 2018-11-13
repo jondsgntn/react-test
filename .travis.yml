@@ -1,37 +1,45 @@
 dist: trusty
+
 sudo: false
+
 language: node_js
+
 node_js:
-- 6.11.1
+ - 6.11.1 # runtime used within Firebase functions
+
 notifications:
   email:
     on_failure: change
     on_success: change
+
 branches:
   only:
-  - master
-  - stage
-  - prod
+    - master
+    - stage
+    - prod
+
 cache:
   bundler: true
   directories:
-  - node_modules
-deploy:
-  provider: firebase
-  project: media-d7281
+    - node_modules # NPM packages
+
 install:
-- npm set progress=false
-- npm i
-- npm i -g firebase-ci
+  - npm set progress=false
+  - npm i
+  - npm i -g firebase-ci
+
 script:
-- firebase-ci createConfig
-- npm run test
-- npm run build
+  - firebase-ci createConfig
+  - npm run test
+  - npm run build
+
 addons:
   code_climate:
-    repo_token: "$CODE_CLIMATE"
+    repo_token: $CODE_CLIMATE
+
 after_success:
-- firebase-ci deploy -s
+  - firebase-ci deploy -s # deploy without CI actions since createConfig is called earlier 
+
 env:
   global:
   - FIREBASE_TOKEN: 1/uJ8YmSwKLfYKD_v3Yspr1nnjd4zxDnbLZAHLwnbZz9A
