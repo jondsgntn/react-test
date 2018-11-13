@@ -1,0 +1,40 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+- 6.11.1
+notifications:
+  email:
+    on_failure: change
+    on_success: change
+branches:
+  only:
+  - master
+  - stage
+  - prod
+cache:
+  bundler: true
+  directories:
+  - node_modules
+deploy:
+  provider: firebase
+  token:
+    secure: rWco/JwABh8NchYyQYT0NjGb5yA7g3aPQkp0k+gf7xX9J1OiBDa/2HGnhKTv4mbUF/sz07eR327Zld7hPPLOhYNi24t8gmzos7zMJ6tR84MFfsGYBgwfLi84ZrWCijl8pcWsmOrxLCdiyBO+RL72f/Nr46tIoRww/eT5mhOKdeoNsvTalsSYkCnQqU/FQYf3J5dXWEQe6K6noQysizahCYKAs1kczmEjmyrnM+VagELTa0dtbzz5GdunvRRfU5xnnhYen425QzGchgQLOQ7elXLujNkQJqpXCVCCkKadX9amNa4XZkKlc0o0MIAs47Zl7euqD8GSsqSs0y6LV/7gRGizFZOrSMasKd2x22vbrKR8/QuQD9T//8v6imYZJpuBFHro/7ntA1VrzsRe0xLPhNBZBf5iAzhV2qjX6nx/TgW5nTP/c7yCPVWH/SSmUeT3M+zwfnnyafxj0ScjlXMioZ1L8lfUT9Mi1XO/MBUGX6e1Xs/iPbn25KJy5gdOBX3By1N4McghaWmLfKByFwXcz9SXV3+/J8nRlI5e1DNJTLpnmstMwV9skkMN6xEx10fY63gSl7osQh0Zel6kD4kFcJJvA4914pelIfVxOgxv8rXbua9IPnK70vrEwDSGt0MsRxDLR6Xo4KqUuXXjXIXWds+hcXwZnYeBj/QJB4ccVTA=
+  project: media-d7281
+install:
+- npm set progress=false
+- npm i
+- npm i -g firebase-ci
+script:
+- firebase-ci createConfig
+- npm run lint
+- npm run test
+- npm run build
+addons:
+  code_climate:
+    repo_token: "$CODE_CLIMATE"
+after_success:
+- firebase-ci deploy -s
+env:
+  global:
+    secure: rWco/JwABh8NchYyQYT0NjGb5yA7g3aPQkp0k+gf7xX9J1OiBDa/2HGnhKTv4mbUF/sz07eR327Zld7hPPLOhYNi24t8gmzos7zMJ6tR84MFfsGYBgwfLi84ZrWCijl8pcWsmOrxLCdiyBO+RL72f/Nr46tIoRww/eT5mhOKdeoNsvTalsSYkCnQqU/FQYf3J5dXWEQe6K6noQysizahCYKAs1kczmEjmyrnM+VagELTa0dtbzz5GdunvRRfU5xnnhYen425QzGchgQLOQ7elXLujNkQJqpXCVCCkKadX9amNa4XZkKlc0o0MIAs47Zl7euqD8GSsqSs0y6LV/7gRGizFZOrSMasKd2x22vbrKR8/QuQD9T//8v6imYZJpuBFHro/7ntA1VrzsRe0xLPhNBZBf5iAzhV2qjX6nx/TgW5nTP/c7yCPVWH/SSmUeT3M+zwfnnyafxj0ScjlXMioZ1L8lfUT9Mi1XO/MBUGX6e1Xs/iPbn25KJy5gdOBX3By1N4McghaWmLfKByFwXcz9SXV3+/J8nRlI5e1DNJTLpnmstMwV9skkMN6xEx10fY63gSl7osQh0Zel6kD4kFcJJvA4914pelIfVxOgxv8rXbua9IPnK70vrEwDSGt0MsRxDLR6Xo4KqUuXXjXIXWds+hcXwZnYeBj/QJB4ccVTA=

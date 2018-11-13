@@ -1,0 +1,43 @@
+{
+  "projects": {
+    "master": "media-d7281",
+    "prod": "media-d7281",
+    "default": "media-d7281"
+  },
+  "ci": {
+    "createConfig": {
+      "master": {
+        "version": "${npm_package_version}",
+        "env": "development",
+        "firebase": {
+          "apiKey": "AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho",
+          "authDomain": "media-d7281.firebaseapp.com",
+          "databaseURL": "https://media-d7281.firebaseio.com",
+          "projectId": "media-d7281",
+          "storageBucket": "media-d7281.appspot.com"
+        },
+        "reduxFirebase": {
+          "userProfile": "users",
+          "enableLogging": false,
+          "updateProfileOnLogin": false
+        }
+      },
+      "prod": {
+        "version": "${npm_package_version}",
+        "env": "production",
+        "firebase": {
+          "apiKey": "AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho",
+          "authDomain": "media-d7281.firebaseapp.com",
+          "databaseURL": "https://media-d7281.firebaseio.com",
+          "projectId": "media-d7281",
+          "storageBucket": "media-d7281.appspot.com"
+        },
+        "reduxFirebase": {
+          "userProfile": "users",
+          "enableLogging": false,
+          "updateProfileOnLogin": false
+        }
+      }
+    }
+  }
+}
