@@ -18,6 +18,8 @@ cache:
   - node_modules
 deploy:
   provider: firebase
+  token:
+    secure: o0GTMz8eQ+y0D4e2uMZ2cy/X9SgOv+dL5d3/eoht6r22DUD60K7sHn0+TcCa1ro5XPsVO8p8Hxm793LRaK+e9HhyXMAQajKZGQ/NZW2A28PTJoltgpxLVsM/bJ43Kt1/7j6R/tR3+saPzkMXF9ZBgofv8N+c+OXxMLKMMzrFxx3/69QSytyMaX6g1rwMtnlQwSZ87Stggbzs0HhNApxnLI26w6NMWsGjAupN8G7RsEvJCrk/mEvFlIzpMWzA+9hwFXwhbCWRgzYY9uF9vibEuQcaCFbVuMNrc+fa4S+tuRB7bx2al1qOHKmZmJO/l6/ahOTRIgsI4g0Imne+UjxCG0PFE+MnfBSrD09o8qg8YjUfbg7ylmUsWufkCEOdJzVFVrJEo8BqsaadTTx9Yg+ueeeuHKeWyztHtaEzCfKDlOQZHVhd2H+CDyTwi88k6DOXNVdHy/fHU6JdOHR4TmxP9EouJqmPtJJ39e1g3+OKTggtYW/dHP9GQwpfx5K7Ac5h1x//rmzhTahduEK+qsoQ8RHkW+qw/Zqj50czYv7jKSfR7BjVBluY61Vn3hCjZxSm4anJyZYgOYS0v4rfw8pW/OwKFw6eD6he48dUKrGSwsQdqqBejz3rKiyUnRsZnzLXC9hP2nf2Axali1ej2tyo786sQdXAEu/fAifl/ouS75Y=
   project: media-d7281
 install:
 - npm set progress=false
