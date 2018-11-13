@@ -27,7 +27,6 @@ install:
 - npm i -g firebase-ci
 script:
 - firebase-ci createConfig
-- npm run lint
 - npm run test
 - npm run build
 addons:
