@@ -18,7 +18,7 @@ export default () => ({
 
         /* Webpack named bundle   */
       },
-      'Login'
+      'Login',
     )
-  }
+  },
 })

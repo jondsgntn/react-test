@@ -1,35 +1,63 @@
-root: true
-
-parser: babel-eslint
-
-extends: [standard, standard-react, prettier, prettier/react]
-plugins: [babel, react, prettier]
-
-env:
-  browser: true
-  es6: true
-  node: true
-
-ecmaFeatures:
-  jsx: true
-  modules: true
-
-globals:
-  __DEV__: false
-  __COVERAGE__: false
-  __TEST__: false
-
-rules:
-  semi: [2, 'never']
-  no-console: 'error'
-  jsx-quotes: ['error', 'prefer-double']
-  prettier/prettier: ['error', {
-    singleQuote: true,
-    trailingComma: 'es6',
-    semi: false,
-    bracketSpacing: true,
-    jsxBracketSameLine: true,
-    printWidth: 80,
-    tabWidth: 2,
-    useTabs: false
-  }]
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "react",
+    "prettier",
+    "babel"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+	  "legacyDecorators": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "settings": {
+	"react": {
+	  "createClass": "createReactClass",
+	  "pragma": "React",
+	  "version": "15.6.2"
+	},
+	"propWrapperFunctions": [ "forbidExtraProps" ]
+  },
+  "globals": {
+		"__DEV__": false,
+		"__COVERAGE__": false,
+		"__TEST__": false
+	},
+  "rules": {
+		"semi": [
+			2,
+			"never"
+		],
+		"no-console": "error",
+		"jsx-quotes": [
+			"error",
+			"prefer-double"
+		],
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"semi": false,
+				"bracketSpacing": true,
+				"jsxBracketSameLine": true,
+				"printWidth": 80,
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		]
+	}
+}

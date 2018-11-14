@@ -13,7 +13,7 @@ window.env = env
 // Store Initialization
 // ------------------------------------
 const initialState = window.___INITIAL_STATE__ || {
-  firebase: { authError: null }
+  firebase: { authError: null },
 }
 const store = createStore(initialState)
 
@@ -53,7 +53,7 @@ if (__DEV__) {
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)
         render()
-      })
+      }),
     )
   }
 }

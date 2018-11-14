@@ -18,7 +18,7 @@ export default store => ({
 
         /* Webpack named bundle   */
       },
-      'Account'
+      'Account',
     )
-  }
+  },
 })

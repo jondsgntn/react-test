@@ -1,4 +1,5 @@
 const ip = require('ip')
+
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -31,7 +32,7 @@ module.exports = {
     'redux-thunk',
     'react-router',
     'react-redux-firebase',
-    'material-ui'
+    'material-ui',
   ],
   /**
    * Settings used to create config.js file when running npm run create-config
@@ -41,29 +42,29 @@ module.exports = {
   ci: {
     development: {
       firebase: {
-        apiKey: "AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho",
-        authDomain: "media-d7281.firebaseapp.com",
-        databaseURL: "https://media-d7281.firebaseio.com",
-        storageBucket: "media-d7281.appspot.com"
+        apiKey: 'AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho',
+        authDomain: 'media-d7281.firebaseapp.com',
+        databaseURL: 'https://media-d7281.firebaseio.com',
+        storageBucket: 'media-d7281.appspot.com',
       },
       reduxFirebase: {
         userProfile: 'users', // root that user profiles are written to
         enableLogging: false, // enable/disable Firebase Database Logging
-        updateProfileOnLogin: false // enable/disable updating of profile on login
-      }
+        updateProfileOnLogin: false, // enable/disable updating of profile on login
+      },
     },
     production: {
       firebase: {
-        apiKey: "AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho",
-        authDomain: "media-d7281.firebaseapp.com",
-        databaseURL: "https://media-d7281.firebaseio.com",
-        storageBucket: "media-d7281.appspot.com"
+        apiKey: 'AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho',
+        authDomain: 'media-d7281.firebaseapp.com',
+        databaseURL: 'https://media-d7281.firebaseio.com',
+        storageBucket: 'media-d7281.appspot.com',
       },
       reduxFirebase: {
         userProfile: 'users',
         enableLogging: false,
-        updateProfileOnLogin: false
-      }
-    }
-  }
+        updateProfileOnLogin: false,
+      },
+    },
+  },
 }

@@ -17,8 +17,8 @@ export const createRoutes = store => ({
     LoginRoute(store),
     SignupRoute(store),
     /* Place all Routes above here so NotFoundRoute can act as a 404 page */
-    NotFoundRoute(store)
-  ]
+    NotFoundRoute(store),
+  ],
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

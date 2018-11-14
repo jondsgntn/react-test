@@ -9,12 +9,12 @@ export const env = 'development'
 
 // Config for firebase
 export const firebase = {
-  apiKey: "AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho",
-  authDomain: "media-d7281.firebaseapp.com",
-  databaseURL: "https://media-d7281.firebaseio.com",
-  projectId: "media-d7281",
-  storageBucket: "media-d7281.appspot.com",
-  messagingSenderId: "440561690094"
+  apiKey: 'AIzaSyBmlzeVZi1thJQLMkgZQ8v-m6QCJzgbeho',
+  authDomain: 'media-d7281.firebaseapp.com',
+  databaseURL: 'https://media-d7281.firebaseio.com',
+  projectId: 'media-d7281',
+  storageBucket: 'media-d7281.appspot.com',
+  messagingSenderId: '440561690094'
 }
 
 // Config for react-redux-firebase
@@ -25,8 +25,8 @@ export const reduxFirebase = {
   userProfile: 'users',
   // Profile data is located within Firestore instead of Real Time Database
   useFirestoreForProfile: true,
-   // place metadata about storage uploads into Firestore
-   // when calling uploadFiles or uploadFile with a third argument
+  // place metadata about storage uploads into Firestore
+  // when calling uploadFiles or uploadFile with a third argument
   useFirestoreForStorageMeta: true,
   enableLogging: false, // enable/disable Firebase Database Logging
   updateProfileOnLogin: false, // enable/disable updating of profile on login

@@ -33,23 +33,23 @@ export const AccountMenu = ({ account, router, onLogoutClick }) => (
 AccountMenu.propTypes = {
   account: PropTypes.shape({
     displayName: PropTypes.string,
-    avatarUrl: PropTypes.string
+    avatarUrl: PropTypes.string,
   }),
   onLogoutClick: PropTypes.func,
   authExists: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
   router: PropTypes.shape({
-    push: PropTypes.func // from withRouter
-  })
+    push: PropTypes.func, // from withRouter
+  }),
 }
 
 AccountMenu.defaultProps = {
   account: {},
-  authExists: false
+  authExists: false,
 }
 
 export default compose(
   withRouter,
-  // pure,
-  // branch(props => !props.authExists, renderComponent(AuthButtons)), // render buttons if auth does not exist
-  toClass
+  pure,
+  branch(props => !props.authExists, renderComponent(AuthButtons)), // render buttons if auth does not exist
+  toClass,
 )(AccountMenu)

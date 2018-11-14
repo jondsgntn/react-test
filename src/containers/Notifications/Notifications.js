@@ -7,6 +7,7 @@ import Snackbar from 'material-ui/Snackbar'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import actions from 'modules/notification'
 import classes from './Notifications.scss'
+
 const closeIconStyle = { paddingTop: '5px', height: '30px' }
 
 export const Notifications = ({ allIds, byId, dismissNotification }) => (
@@ -29,11 +30,14 @@ export const Notifications = ({ allIds, byId, dismissNotification }) => (
 Notifications.propTypes = {
   allIds: PropTypes.array.isRequired,
   byId: PropTypes.object.isRequired,
-  dismissNotification: PropTypes.func.isRequired
+  dismissNotification: PropTypes.func.isRequired,
 }
 
 export default compose(
   pure,
-  connect(({ notifications: { allIds, byId } }) => ({ allIds, byId }), actions),
-  branch(props => !size(props.allIds), renderNothing) // only render if notifications exist
+  connect(
+    ({ notifications: { allIds, byId } }) => ({ allIds, byId }),
+    actions,
+  ),
+  branch(props => !size(props.allIds), renderNothing), // only render if notifications exist
 )(Notifications)

@@ -18,7 +18,7 @@ import classes from './Navbar.scss'
 const buttonStyle = {
   color: 'white',
   textDecoration: 'none',
-  alignSelf: 'center'
+  alignSelf: 'center',
 }
 
 const avatarStyles = {
@@ -28,8 +28,8 @@ const avatarStyles = {
     marginRight: '.5rem',
     width: '30px',
     height: '64px',
-    padding: '0'
-  }
+    padding: '0',
+  },
 }
 
 export const Navbar = ({ auth, profile, router, handleLogout }) => {
@@ -60,16 +60,10 @@ export const Navbar = ({ auth, profile, router, handleLogout }) => {
   const mainMenu = (
     <div className={classes.menu}>
       <Link to={SIGNUP_PATH}>
-        <FlatButton
-          label="Sign Up"
-          style={buttonStyle}
-        />
+        <FlatButton label="Sign Up" style={buttonStyle} />
       </Link>
       <Link to={LOGIN_PATH}>
-        <FlatButton
-          label="Login"
-          style={buttonStyle}
-        />
+        <FlatButton label="Login" style={buttonStyle} />
       </Link>
     </div>
   )
@@ -79,18 +73,16 @@ export const Navbar = ({ auth, profile, router, handleLogout }) => {
       iconButtonElement={iconButton}
       targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-      animated={false}
-    >
+      animated={false}>
       <MenuItem
         primaryText="Account"
         onTouchTap={() => router.push(ACCOUNT_PATH)}
       />
-      <MenuItem
-        primaryText="Sign out"
-        onTouchTap={handleLogout}
-      />
+      <MenuItem primaryText="Sign out" onTouchTap={handleLogout} />
     </IconMenu>
-  ) : mainMenu
+  ) : (
+    mainMenu
+  )
   return (
     <AppBar
       title={
@@ -108,20 +100,22 @@ export const Navbar = ({ auth, profile, router, handleLogout }) => {
 
 Navbar.propTypes = {
   auth: PropTypes.object, // from connect
-  handleLogout: PropTypes.func // from withHandlers
+  handleLogout: PropTypes.func, // from withHandlers
+  profile: PropTypes.object,
+  router: PropTypes.object,
 }
 
 export default compose(
-  // withFirebase, // add props.firebase from react-redux-firebase
+  withFirebase, // add props.firebase from react-redux-firebase
   withRouter, // add props.router
   withHandlers({
     handleLogout: props => () => {
       props.firebase.logout()
       props.router.push('/')
-    }
+    },
   }),
   connect(({ firebase: { auth, profile } }) => ({
     auth,
-    profile
-  }))
+    profile,
+  })),
 )(Navbar)

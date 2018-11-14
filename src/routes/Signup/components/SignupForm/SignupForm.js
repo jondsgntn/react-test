@@ -42,9 +42,9 @@ const SignupForm = ({ pristine, submitting, handleSubmit }) => (
 SignupForm.propTypes = {
   pristine: PropTypes.bool.isRequired, // added by redux-form
   submitting: PropTypes.bool.isRequired, // added by redux-form
-  handleSubmit: PropTypes.func.isRequired // added by redux-form
+  handleSubmit: PropTypes.func.isRequired, // added by redux-form
 }
 
 export default reduxForm({
-  form: SIGNUP_FORM_NAME
+  form: SIGNUP_FORM_NAME,
 })(SignupForm)

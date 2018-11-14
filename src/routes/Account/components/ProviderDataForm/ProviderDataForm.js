@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { List, ListItem } from 'material-ui/List'
-import classes from './ProviderDataForm.scss'
 import AccountCircle from 'material-ui/svg-icons/action/account-circle'
+import classes from './ProviderDataForm.scss'
 
 export const ProviderData = ({ providerData }) => (
   <div className={classes.container}>
@@ -22,7 +22,7 @@ export const ProviderData = ({ providerData }) => (
               label="email"
               primaryText={providerAccount.email}
               disabled
-            />
+            />,
           ]}
         />
       ))}
@@ -31,7 +31,7 @@ export const ProviderData = ({ providerData }) => (
 )
 
 ProviderData.propTypes = {
-  providerData: PropTypes.array.isRequired
+  providerData: PropTypes.array.isRequired,
 }
 
 export default ProviderData

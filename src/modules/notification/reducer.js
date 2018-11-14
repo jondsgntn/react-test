@@ -29,7 +29,7 @@ const byId = (state = {}, action) => {
     case NOTIFICATION_SHOW:
       return {
         ...state,
-        [action.payload.id]: notification(state[action.payload.id], action)
+        [action.payload.id]: notification(state[action.payload.id], action),
       }
     case NOTIFICATION_DISMISS:
       return omit(state, action.payload)

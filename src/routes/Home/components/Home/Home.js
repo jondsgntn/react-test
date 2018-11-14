@@ -23,7 +23,7 @@ const Home = ({ todos }) => (
 )
 
 Home.propTypes = {
-  todos: PropTypes.array
+  todos: PropTypes.array,
 }
 
 const enhance = compose(
@@ -34,18 +34,18 @@ const enhance = compose(
     onNewSubmit: props => newTodo =>
       props.store.firestore.add('todos', {
         ...newTodo,
-        owner: props.uid || 'Anonymous'
-      })
+        owner: props.uid || 'Anonymous',
+      }),
   }),
   lifecycle({
     componentWillMount() {
       this.props.loadCollection('todos')
-    }
+    },
   }),
   connect(({ firestore, firebase }) => ({
     todos: firestore.ordered.todos || [],
-    uid: firebase.auth.uid
-  }))
+    uid: firebase.auth.uid,
+  })),
 )
 
 export default enhance(Home)

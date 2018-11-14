@@ -21,13 +21,12 @@ export const AccountForm = ({ account, handleSubmit, submitting }) => (
       component={TextField}
       floatingLabelText="Avatar Url"
     />
-    {!!account &&
-      !!account.providerData && (
-        <div>
-          <h4>Linked Accounts</h4>
-          <ProviderDataForm providerData={account.providerData} />
-        </div>
-      )}
+    {!!account && !!account.providerData && (
+      <div>
+        <h4>Linked Accounts</h4>
+        <ProviderDataForm providerData={account.providerData} />
+      </div>
+    )}
     <RaisedButton
       primary
       label="Save"
@@ -40,9 +39,9 @@ export const AccountForm = ({ account, handleSubmit, submitting }) => (
 AccountForm.propTypes = {
   account: PropTypes.object,
   handleSubmit: PropTypes.func,
-  submitting: PropTypes.bool
+  submitting: PropTypes.bool,
 }
 
 export default reduxForm({
-  form: ACCOUNT_FORM_NAME
+  form: ACCOUNT_FORM_NAME,
 })(AccountForm)

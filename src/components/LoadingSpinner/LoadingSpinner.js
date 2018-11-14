@@ -12,7 +12,7 @@ export const LoadingSpinner = ({ size }) => (
 )
 
 LoadingSpinner.propTypes = {
-  size: PropTypes.number
+  size: PropTypes.number,
 }
 
 export default LoadingSpinner

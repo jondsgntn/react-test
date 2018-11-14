@@ -7,7 +7,7 @@ import classes from './Navbar.scss'
 const buttonStyle = {
   color: 'white',
   textDecoration: 'none',
-  alignSelf: 'center'
+  alignSelf: 'center',
 }
 
 export const AuthButtons = () => (

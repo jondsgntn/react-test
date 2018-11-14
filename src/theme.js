@@ -8,7 +8,7 @@ import {
   grey900,
   white,
   grey400,
-  darkBlack
+  darkBlack,
 } from 'material-ui/styles/colors'
 import { fade } from 'material-ui/utils/colorManipulator'
 import spacing from 'material-ui/styles/spacing'
@@ -16,7 +16,7 @@ import zIndex from 'material-ui/styles/zIndex'
 
 export default {
   spacing,
-  zIndex: zIndex,
+  zIndex,
   fontFamily: 'Roboto, sans-serif',
   palette: {
     primary1Color: blueGrey500,
@@ -30,6 +30,6 @@ export default {
     canvasColor: white,
     borderColor: grey400,
     disabledColor: fade(darkBlack, 0.3),
-    pickerHeaderColor: pinkA200
-  }
+    pickerHeaderColor: pinkA200,
+  },
 }

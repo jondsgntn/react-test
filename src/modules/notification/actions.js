@@ -2,7 +2,7 @@ import { v4 } from 'uuid'
 import {
   NOTIFICATION_SHOW,
   NOTIFICATION_DISMISS,
-  NOTIFICATION_CLEAR
+  NOTIFICATION_CLEAR,
 } from './actionTypes'
 
 const defaultDismissTime = 2500 // 2.5 seconds
@@ -27,7 +27,7 @@ export const showNotification = notif => {
     setTimeout(() => {
       dispatch({
         type: NOTIFICATION_DISMISS,
-        payload: payload.id
+        payload: payload.id,
       })
     }, payload.dismissAfter || defaultDismissTime)
   }
@@ -45,7 +45,7 @@ export const showError = message =>
  */
 export const dismissNotification = payload => ({
   type: NOTIFICATION_DISMISS,
-  payload
+  payload,
 })
 
 /**

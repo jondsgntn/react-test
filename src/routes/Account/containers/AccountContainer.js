@@ -10,23 +10,26 @@ import LoadingSpinner from 'components/LoadingSpinner'
 import AccountForm from '../components/AccountForm/AccountForm'
 import classes from './AccountContainer.scss'
 
-@UserIsAuthenticated // redirect to /login if user is not authenticated
+@UserIsAuthenticated
 @firebaseConnect()
 @connect(({ firebase }) => ({
   auth: pathToJS(firebase, 'auth'),
-  account: pathToJS(firebase, 'profile')
+  account: pathToJS(firebase, 'profile'),
 }))
 export default class Account extends Component {
   static propTypes = {
     account: PropTypes.object,
     auth: PropTypes.object,
     firebase: PropTypes.shape({
-      logout: PropTypes.func.isRequired
-    })
+      logout: PropTypes.func.isRequired,
+    }),
   }
 
   updateAccount = newAccount => {
-    const { firebase: { update }, auth } = this.props
+    const {
+      firebase: { update },
+      auth,
+    } = this.props
     // corresponds to /users/${uid}
     return update(`${fbReduxSettings.userProfile}/${auth.uid}`, newAccount)
   }

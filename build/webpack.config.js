@@ -14,21 +14,21 @@ const __PROD__ = project.env === 'production'
 const config = {
   entry: {
     normalize: [inProjectSrc('normalize')],
-    main: [inProjectSrc(project.main)]
+    main: [inProjectSrc(project.main)],
   },
   devtool: project.sourcemaps ? 'source-map' : false,
   output: {
     path: inProject(project.outDir),
     filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
-    publicPath: project.publicPath
+    publicPath: project.publicPath,
   },
   resolve: {
     modules: [inProject(project.srcDir), 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   externals: project.externals,
   module: {
-    rules: []
+    rules: [],
   },
   plugins: [
     new webpack.DefinePlugin(
@@ -37,16 +37,16 @@ const config = {
           'process.env': { NODE_ENV: JSON.stringify(project.env) },
           __DEV__,
           __TEST__,
-          __PROD__
+          __PROD__,
         },
-        project.globals
-      )
-    )
+        project.globals,
+      ),
+    ),
   ],
   node: {
     // disable node constants so constants.js file is used instead (see https://webpack.js.org/configuration/node/)
-    constants: false
-  }
+    constants: false,
+  },
 }
 
 // JavaScript
@@ -70,15 +70,15 @@ config.module.rules.push({
             {
               helpers: true,
               polyfill: false, // we polyfill needed features in src/normalize.js
-              regenerator: true
-            }
+              regenerator: true,
+            },
           ],
           [
             'babel-plugin-transform-object-rest-spread',
             {
-              useBuiltIns: true // we polyfill Object.assign in src/normalize.js
-            }
-          ]
+              useBuiltIns: true, // we polyfill Object.assign in src/normalize.js
+            },
+          ],
         ],
         presets: [
           'babel-preset-react',
@@ -88,14 +88,14 @@ config.module.rules.push({
               targets: {
                 ie9: true,
                 uglify: true,
-                modules: false
-              }
-            }
-          ]
-        ]
-      }
-    }
-  ]
+                modules: false,
+              },
+            },
+          ],
+        ],
+      },
+    },
+  ],
 })
 
 // Styles
@@ -103,7 +103,7 @@ config.module.rules.push({
 const extractStyles = new ExtractTextPlugin({
   filename: 'styles/[name].[contenthash].css',
   allChunks: true,
-  disable: __DEV__
+  disable: __DEV__,
 })
 
 config.module.rules.push({
@@ -122,28 +122,28 @@ config.module.rules.push({
             autoprefixer: {
               add: true,
               remove: true,
-              browsers: ['last 2 versions']
+              browsers: ['last 2 versions'],
             },
             discardComments: {
-              removeAll: true
+              removeAll: true,
             },
             discardUnused: false,
             mergeIdents: false,
             reduceIdents: false,
             safe: true,
-            sourcemap: project.sourcemaps
-          }
-        }
+            sourcemap: project.sourcemaps,
+          },
+        },
       },
       {
         loader: 'sass-loader',
         options: {
           sourceMap: project.sourcemaps,
-          includePaths: [inProjectSrc('styles')]
-        }
-      }
-    ]
-  })
+          includePaths: [inProjectSrc('styles')],
+        },
+      },
+    ],
+  }),
 })
 config.plugins.push(extractStyles)
 
@@ -153,8 +153,8 @@ config.module.rules.push({
   test: /\.(png|jpg|gif)$/,
   loader: 'url-loader',
   options: {
-    limit: 8192
-  }
+    limit: 8192,
+  },
 })
 
 // Fonts
@@ -165,7 +165,7 @@ config.module.rules.push({
   ['otf', 'font/opentype'],
   ['ttf', 'application/octet-stream'],
   ['eot', 'application/vnd.ms-fontobject'],
-  ['svg', 'image/svg+xml']
+  ['svg', 'image/svg+xml'],
 ].forEach(font => {
   const extension = font[0]
   const mimetype = font[1]
@@ -176,8 +176,8 @@ config.module.rules.push({
     options: {
       name: 'fonts/[name].[ext]',
       limit: 10000,
-      mimetype
-    }
+      mimetype,
+    },
   })
 })
 
@@ -188,21 +188,22 @@ config.plugins.push(
     template: inProjectSrc('index.html'),
     inject: true,
     minify: {
-      collapseWhitespace: true
-    }
-  })
+      collapseWhitespace: true,
+    },
+  }),
 )
 
 // Development Tools
 // ------------------------------------
 if (__DEV__) {
   config.entry.main.push(
-    `webpack-hot-middleware/client.js?path=${config.output
-      .publicPath}__webpack_hmr`
+    `webpack-hot-middleware/client.js?path=${
+      config.output.publicPath
+    }__webpack_hmr`,
   )
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
   )
 }
 
@@ -216,7 +217,7 @@ if (!__TEST__) {
     config.entry.vendor = project.vendors
   }
   config.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin({ names: bundles })
+    new webpack.optimize.CommonsChunkPlugin({ names: bundles }),
   )
 }
 
@@ -226,7 +227,7 @@ if (__PROD__) {
   config.plugins.push(
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false
+      debug: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: !!config.devtool,
@@ -241,9 +242,9 @@ if (__PROD__) {
         dead_code: true,
         evaluate: true,
         if_return: true,
-        join_vars: true
-      }
-    })
+        join_vars: true,
+      },
+    }),
   )
 }
 

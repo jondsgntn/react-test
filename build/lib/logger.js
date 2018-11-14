@@ -11,17 +11,17 @@ const spread = fn =>
 exports.log = console.log.bind(console)
 
 exports.error = spread(messages => {
-  console.error(chalk.red.apply(chalk, [figures.cross].concat(messages)))
+  console.error(chalk.red(...[figures.cross].concat(messages)))
 })
 
 exports.info = spread(messages => {
-  console.info(chalk.cyan.apply(chalk, [figures.info].concat(messages)))
+  console.info(chalk.cyan(...[figures.info].concat(messages)))
 })
 
 exports.success = spread(messages => {
-  console.log(chalk.green.apply(chalk, [figures.tick].concat(messages)))
+  console.log(chalk.green(...[figures.tick].concat(messages)))
 })
 
 exports.warn = spread(messages => {
-  console.warn(chalk.yellow.apply(chalk, [figures.warning].concat(messages)))
+  console.warn(chalk.yellow(...[figures.warning].concat(messages)))
 })

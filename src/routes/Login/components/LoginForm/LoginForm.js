@@ -51,9 +51,9 @@ export const LoginForm = ({ pristine, submitting, handleSubmit }) => (
 LoginForm.propTypes = {
   pristine: PropTypes.bool.isRequired, // added by redux-form
   submitting: PropTypes.bool.isRequired, // added by redux-form
-  handleSubmit: PropTypes.func.isRequired // added by redux-form
+  handleSubmit: PropTypes.func.isRequired, // added by redux-form
 }
 
 export default reduxForm({
-  form: LOGIN_FORM_NAME
+  form: LOGIN_FORM_NAME,
 })(LoginForm)

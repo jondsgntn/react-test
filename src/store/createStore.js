@@ -48,8 +48,8 @@ export default (initialState = {}) => {
       applyMiddleware(...middleware),
       reduxFirestore(firebase, reduxConfig),
       reactReduxFirebase(firebase, reduxConfig), // used for auth/profile
-      ...enhancers
-    )
+      ...enhancers,
+    ),
   )
   store.asyncReducers = {}
 

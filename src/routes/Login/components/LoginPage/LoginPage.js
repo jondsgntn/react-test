@@ -32,11 +32,11 @@ export const LoginPage = ({ emailLogin, googleLogin, onSubmitFail }) => (
 LoginPage.propTypes = {
   firebase: PropTypes.shape({
     // eslint-disable-line react/no-unused-prop-types
-    login: PropTypes.func.isRequired
+    login: PropTypes.func.isRequired,
   }),
   emailLogin: PropTypes.func,
   onSubmitFail: PropTypes.func,
-  googleLogin: PropTypes.func
+  googleLogin: PropTypes.func,
 }
 
 export default compose(
@@ -50,6 +50,6 @@ export default compose(
       firebase
         .login({ provider: 'google', type: 'popup' })
         .catch(err => showError(err.message)),
-    emailLogin: ({ firebase }) => creds => firebase.login(creds)
-  })
+    emailLogin: ({ firebase }) => creds => firebase.login(creds),
+  }),
 )(LoginPage)

@@ -26,9 +26,9 @@ export const UserIsAuthenticated = UserAuthWrapper({
     browserHistory.replace(newLoc)
     dispatch({
       type: UNAUTHED_REDIRECT,
-      payload: { message: 'User is not authenticated.' }
+      payload: { message: 'User is not authenticated.' },
     })
-  }
+  },
 })
 
 /**
@@ -55,10 +55,10 @@ export const UserIsNotAuthenticated = UserAuthWrapper({
   redirectAction: newLoc => dispatch => {
     browserHistory.replace(newLoc)
     dispatch({ type: AUTHED_REDIRECT })
-  }
+  },
 })
 
 export default {
   UserIsAuthenticated,
-  UserIsNotAuthenticated
+  UserIsNotAuthenticated,
 }

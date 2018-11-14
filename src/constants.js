@@ -10,14 +10,14 @@ export const NEW_PROJECT_FORM_NAME = 'newProject'
 export const formNames = {
   account: ACCOUNT_FORM_NAME,
   signup: SIGNUP_FORM_NAME,
-  login: LOGIN_FORM_NAME
+  login: LOGIN_FORM_NAME,
 }
 
 export const paths = {
   list: LIST_PATH,
   account: ACCOUNT_PATH,
   login: LOGIN_PATH,
-  signup: SIGNUP_PATH
+  signup: SIGNUP_PATH,
 }
 
 export default { ...paths, ...formNames }

@@ -29,18 +29,19 @@ export const SignupPage = ({ emailSignup, googleLogin, onSubmitFail }) => (
 )
 
 SignupPage.propTypes = {
-  firebase: PropTypes.shape({ // eslint-disable-line react/no-unused-prop-types
+  firebase: PropTypes.shape({
+    // eslint-disable-line react/no-unused-prop-types
     login: PropTypes.func.isRequired,
-    createUser: PropTypes.func.isRequired
+    createUser: PropTypes.func.isRequired,
   }),
   emailSignup: PropTypes.func,
   onSubmitFail: PropTypes.func,
-  googleLogin: PropTypes.func
+  googleLogin: PropTypes.func,
 }
 
 export default compose(
   // UserIsNotAuthenticated, // redirect to list page if logged in
-  // withFirestore,
+  withFirestore,
   pure,
   withNotifications, // add props.showError
   withHandlers({
@@ -54,7 +55,7 @@ export default compose(
       firebase.createUser(creds, {
         // email signup
         email: creds.email,
-        username: creds.username
-      })
-  })
+        username: creds.username,
+      }),
+  }),
 )(SignupPage)

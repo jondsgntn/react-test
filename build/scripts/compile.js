@@ -19,7 +19,8 @@ const runWebpackCompiler = webpackConfig =>
         logger.error('Webpack compiler encountered errors.')
         logger.log(jsonStats.errors.join('\n'))
         return reject(new Error('Webpack compiler encountered errors'))
-      } else if (jsonStats.warnings.length > 0) {
+      }
+      if (jsonStats.warnings.length > 0) {
         logger.warn('Webpack compiler encountered warnings.')
         logger.log(jsonStats.warnings.join('\n'))
       }
@@ -31,14 +32,14 @@ const compile = () =>
   Promise.resolve()
     .then(() => logger.info('Starting compiler...'))
     .then(() =>
-      logger.info('Target application environment: ' + chalk.bold(project.env))
+      logger.info(`Target application environment: ${chalk.bold(project.env)}`),
     )
     .then(() => runWebpackCompiler(webpackConfig))
     .then(stats => {
       logger.info(`Copying static assets from ./public to ./${project.outDir}.`)
       fs.copySync(
         path.resolve(project.basePath, 'public'),
-        path.resolve(project.basePath, project.outDir)
+        path.resolve(project.basePath, project.outDir),
       )
       return stats
     })
@@ -47,8 +48,8 @@ const compile = () =>
         logger.log(
           stats.toString({
             colors: true,
-            chunks: false
-          })
+            chunks: false,
+          }),
         )
       }
       logger.success(`Compiler finished successfully! See ./${project.outDir}.`)
